@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Stock Base - Login</title>
+    <link rel="stylesheet" href="login-style.css">>
+</head>
+<body>
+<div class="box-form">
+    <div class="left">
+        <div class="overlay">
+            <h1>Stock Base</h1>
+            <p>welcome to the stock base. Please log in to continue.</p>
+        </div>
+    </div>
+    <div class="right">
+        <h5>Login</h5>
+        <p>Don't have an account? <a href="/registration">Login</a></p>
+        <form method="post">
+            <div class="inputs">
+                <input type="email" name="email" placeholder="Email" required>
+                <br>
+                <input type="password" name="password" placeholder="Password" required>
+                <br>
+            </div>
+            <br><br>
+            <div class="remember-me--forget-password">
+                <label>
+                    <input type="checkbox" name="remember-me" checked>
+                    <span>Remember me</span>
+                </label>
+                <p><a href="/forget-password">forget password</a></p>
+            </div>
+            <br>
+            <button type="submit">Login</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>
