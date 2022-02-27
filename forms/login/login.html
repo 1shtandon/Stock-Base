@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Stock Base - Login</title>
-    <link rel="stylesheet" href="login-style.css">>
+    <link rel="stylesheet" href="login-style.css">
+    <script src="script.js"></script>
 </head>
 <body>
 <div class="box-form">
@@ -16,7 +17,7 @@
     <div class="right">
         <h5>Login</h5>
         <p>Don't have an account? <a href="/registration">Login</a></p>
-        <form method="post">
+        <form method="post" name="login" onsubmit="return validateForm('login')">
             <div class="inputs">
                 <input type="email" name="email" placeholder="Email" required>
                 <br>
