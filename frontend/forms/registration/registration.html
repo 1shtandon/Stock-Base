@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Stock Base</title>
-    <link rel="stylesheet" href="reg-style.css">>
+    <link rel="stylesheet" href="reg-style.css">
+    <script src="script.js"></script>
 </head>
 <body>
 <div class="box-form">
@@ -16,7 +17,7 @@
     <div class="right">
         <h5>Register</h5>
         <p>Already have an account? <a href="/login">Login</a></p>
-        <form method="post">
+        <form method="post" name="reg" onsubmit="return validateForm('reg')">
             <div class="inputs">
                 <input type="text" name="username" placeholder="Username" required>
                 <br>
@@ -25,6 +26,8 @@
                 <input type="email" name="email" placeholder="Email" required>
                 <br>
                 <input type="password" name="password" placeholder="Password" required>
+                <br>
+                <input type="password" name="confirmPassword" placeholder="Confirm Password" required>
                 <br>
             </div>
             <br>
