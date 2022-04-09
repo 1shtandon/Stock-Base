@@ -102,7 +102,8 @@ class StockManager:
     @staticmethod
     def search_stocks_by_name(stock_name: str) -> List[Stock]:
         data = mysql_connection.fetch_all(
-            "SELECT instrument_id, stock_type, stock_name, prev_close, currentPrice, day_high, day_low FROM stock_table WHERE stock_name LIKE CONCAT('%',%s,'%')",
+            "SELECT instrument_id, stock_type, stock_name, prev_close, currentPrice, day_high, day_low FROM "
+            "stock_table WHERE stock_name LIKE CONCAT('%',%s,'%')",
             (stock_name,)
         )
         return [

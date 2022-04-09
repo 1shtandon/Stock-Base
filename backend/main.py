@@ -4,7 +4,7 @@ from auth import user_manager
 from auth.session import Session
 from auth.user import UsernameAlreadyExists, EmailAlreadyExists
 from middlware import initialize_middleware
-from models import UserRegisterModel, LoginModel
+from models import UserRegisterModel, LoginModel, LoginResponse
 from feedback.views import initialize_views as feedback_initialize_views
 from stock.views import initialize_views as stock_initialize_views
 
@@ -25,7 +25,12 @@ def admin_login(request: Request, login_data: LoginModel, response: Response):
     session_key = Session.create_session(user)
     request.is_authorized = True
     response.set_cookie(key="session_key", value=session_key)
-    return {"message": "Login successful"}
+    return LoginResponse(
+        access_token=session_key,
+        username=user.username,
+        email=user.email,
+        isAdmin=user.is_admin,
+    )
 
 
 @app.post("/login")
@@ -37,7 +42,12 @@ def login(request: Request, login_data: LoginModel, response: Response):
     session_key = Session.create_session(user)
     request.is_authorized = True
     response.set_cookie(key="session_key", value=session_key)
-    return {"message": "Login successful"}
+    return LoginResponse(
+        access_token=session_key,
+        username=user.username,
+        email=user.email,
+        isAdmin=user.is_admin,
+    )
 
 
 @app.post("/logout")
