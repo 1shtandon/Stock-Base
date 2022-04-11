@@ -1,54 +1,77 @@
-CREATE TABLE `user_table` (
-  `user_id` int PRIMARY KEY AUTO_INCREMENT,
-  `username` varchar(255) UNIQUE,
-  `password` varchar(255),
-  `email` varchar(255) UNIQUE,
-  `age` int,
-  `first_name` varchar(255),
-  `last_name` varchar(255)
+CREATE TABLE `user_table`
+(
+    `user_id`    int PRIMARY KEY AUTO_INCREMENT,
+    `username`   varchar(255) UNIQUE,
+    `password`   varchar(255) not null,
+    `email`      varchar(255) UNIQUE,
+    `age`        int          not null,
+    `first_name` varchar(255) not null,
+    `last_name`  varchar(255) not null
 );
 
-CREATE TABLE `admin_table` (
-  `admin_id` int PRIMARY KEY AUTO_INCREMENT,
-  `username` varchar(255) UNIQUE,
-  `password` varchar(255),
-  `email` varchar(255) UNIQUE
+CREATE TABLE `admin_table`
+(
+    `admin_id` int PRIMARY KEY AUTO_INCREMENT,
+    `username` varchar(255) UNIQUE,
+    `password` varchar(255) not null,
+    `email`    varchar(255) UNIQUE
 );
 
-CREATE TABLE `feedback_table` (
-  `feedback_id` int PRIMARY KEY AUTO_INCREMENT,
-  `user_id` int,
-  `title` varchar(255),
-  `message` text
+CREATE TABLE `feedback_table`
+(
+    `feedback_id` int PRIMARY KEY AUTO_INCREMENT,
+    `user_id`     int          not null,
+    `title`       varchar(255) not null,
+    `message`     text         not null
 );
 
-CREATE TABLE `transaction_table` (
-  `transaction_id` int PRIMARY KEY AUTO_INCREMENT,
-  `instrument_id` varchar(255),
-  `quantity` int,
-  `price` double,
-  `user_id` int,
-  `purchase_date` date
+CREATE TABLE `transaction_table`
+(
+    `transaction_id` int PRIMARY KEY AUTO_INCREMENT,
+    `instrumentId`  varchar(255) not null,
+    `quantity`       int          not null,
+    `price`          double       not null,
+    `user_id`        int          not null,
+    `purchase_date`  date         not null
 );
 
-CREATE TABLE `stock_table` (
-  `instrument_id` varchar(255) PRIMARY KEY,
-  `stock_type` ENUM ('NSE', 'BSE'),
-  `stock_name` varchar(255),
-  `prev_close` double,
-  `currentPrice` double,
-  `day_high` double,
-  `day_low` double
+CREATE TABLE `stock_table`
+(
+    `instrumentId` varchar(255) PRIMARY KEY not null,
+    `prevClose`     double                   not null,
+    `dayHigh`       double                   not null,
+    `dayLow`        double                   not null,
+    `high52weeks` double                   not null,
+    `low52weeks`  double                   not null,
+    `dividendYield` double                   not null,
+    `faceValue`     double                   not null,
+    `bookValue`     double                   not null,
+    `pros`          text                     not null,
+    `cons`          text                     not null,
+    `marketCap`     double                   not null,
+    `price`         double                   not null,
+    `PERatio`       double                   not null,
+    `about`         text                     not null,
+    `stockType`    ENUM ('NSE', 'BSE')      not null,
+    `stock_name`    varchar(255)             not null,
+    `prev_close`    double                   not null,
+    `currentPrice`  double                   not null,
+    `day_high`      double                   not null,
+    `day_low`       double                   not null
 );
 
-CREATE TABLE `sessios_table` (
-  `user_id` int,
-  `is_admin` boolean,
-  `session_key` varchar(255)
+CREATE TABLE `sessios_table`
+(
+    `user_id`     int          not null,
+    `is_admin`    boolean      not null,
+    `session_key` varchar(255) not null unique
 );
 
-ALTER TABLE `feedback_table` ADD FOREIGN KEY (`user_id`) REFERENCES `user_table` (`user_id`);
+ALTER TABLE `feedback_table`
+    ADD FOREIGN KEY (`user_id`) REFERENCES `user_table` (`user_id`);
 
-ALTER TABLE `transaction_table` ADD FOREIGN KEY (`user_id`) REFERENCES `user_table` (`user_id`);
+ALTER TABLE `transaction_table`
+    ADD FOREIGN KEY (`user_id`) REFERENCES `user_table` (`user_id`);
 
-ALTER TABLE `transaction_table` ADD FOREIGN KEY (`instrument_id`) REFERENCES `stock_table` (`instrument_id`);
+ALTER TABLE `transaction_table`
+    ADD FOREIGN KEY (`instrumentId`) REFERENCES `stock_table` (`instrumentId`);

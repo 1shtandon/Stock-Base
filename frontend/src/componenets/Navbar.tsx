@@ -6,20 +6,25 @@ import UserInfoInterface from '../interfaces/UserInfo';
 export interface NavBarItemInterface {
     name: string;
     link: string;
+    callback?: () => void;
     active?: boolean;
 }
 
-export const NavbarItem: React.FC<NavBarItemInterface> = ({name, link, active}) => {
+export interface LogoutInterface {
+    logout: () => void;
+}
+
+export const NavbarItem: React.FC<NavBarItemInterface> = ({name, link, active, callback}) => {
     return (
         <li className={active === true ? "nav-link active" : "nav-link"}>
-            <Link to={link}>
+            <Link to={link} onClick={callback}>
                 {name}
             </Link>
         </li>
     )
 }
 
-const Navbar: React.FC<UserInfoInterface> = ({loggedIn}) => {
+const Navbar: React.FC<UserInfoInterface & LogoutInterface> = ({loggedIn, logout}) => {
     return (
         <nav className="navbar navbar-light navbar-expand-md fixed-top" id="mainNav">
             <div className="container">
@@ -34,7 +39,10 @@ const Navbar: React.FC<UserInfoInterface> = ({loggedIn}) => {
                         <NavbarItem name={"Tools"} link={"/#tools"}/>
                         <NavbarItem name={"Contact"} link={"/#contact"}/>
                         {loggedIn ?
-                            <NavbarItem name={"DashBoard"} link={"/dashboard"}/>
+                            <>
+                                <NavbarItem name={"Logout"} link={"/"} callback={logout} />
+                                <NavbarItem name={"DashBoard"} link={"/dashboard"}/>
+                            </>
                             :
                             <>
                                 <NavbarItem name={"Signup"} link={"/signup"}/>

@@ -7,7 +7,7 @@ class FeedbackModel(BaseModel):
 
 
 class TransactionModel(BaseModel):
-    instrument_id: str
+    instrumentId: str
     quantity: int
     price: float
     purchase_date: str

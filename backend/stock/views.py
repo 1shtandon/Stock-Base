@@ -10,19 +10,19 @@ from stock.transaction import TransactionManager
 
 
 def initialize_views(app: FastAPI) -> None:
-    app.post("/stock")(create_stock)
-    app.get("/stock/search")(search_stocks)
-    app.get("/stock")(get_stock)
-    app.get("/stock/all")(get_all_stocks)
-    app.post("/transaction")(create_transaction)
-    app.get('/transaction')(get_transaction)
+    app.post("/stock/")(create_stock)
+    app.get("/stock/search/")(search_stocks)
+    app.get("/stock/")(get_stock)
+    app.get("/stock/all/")(get_all_stocks)
+    app.post("/transaction/")(create_transaction)
+    app.get('/transaction/')(get_transaction)
 
 
 @normal_user_required
 def get_transaction(request: Request, response: Response, stock_id: Optional[str] = None):
     if stock_id:
-        transactions = TransactionManager.get_transactions_by_user_id_and_instrument_id(
-            instrument_id=stock_id,
+        transactions = TransactionManager.get_transactions_by_user_id_and_instrumentId(
+            instrumentId=stock_id,
             user_id=request.user.user_id,
         )
     else:
@@ -36,7 +36,7 @@ def get_transaction(request: Request, response: Response, stock_id: Optional[str
 def create_transaction(transaction_model: TransactionModel, request: Request, response: Response):
     try:
         transaction = TransactionManager.create_transaction(
-            instrument_id=transaction_model.instrument_id,
+            instrumentId=transaction_model.instrumentId,
             quantity=transaction_model.quantity,
             price=transaction_model.price,
             purchase_date=transaction_model.purchase_date,
@@ -51,19 +51,28 @@ def create_transaction(transaction_model: TransactionModel, request: Request, re
 def create_stock(request: Request, response: Response, stock_model: StockModel):
     try:
         stock = StockManager.create_stock(
-            instrument_id=stock_model.instrument_id,
-            stock_name=stock_model.stock_name,
-            stock_type=stock_model.stock_type,
-            prev_close=stock_model.prev_close,
-            day_low=stock_model.day_low,
-            day_high=stock_model.day_high,
-            current_prize=stock_model.current_prize,
+            instrumentId=stock_model.instrumentId,
+            stockType=stock_model.stockType,
+            marketCap=stock_model.marketCap,
+            prevClose=stock_model.prevClose,
+            dayLow=stock_model.dayLow,
+            dayHigh=stock_model.dayHigh,
+            bookValue=stock_model.bookValue,
+            faceValue=stock_model.faceValue,
+            low52weeks=stock_model.low52weeks,
+            dividendYield=stock_model.dividendYield,
+            high52weeks=stock_model.high52weeks,
+            about=stock_model.about,
+            price=stock_model.price,
+            cons=stock_model.cons,
+            pros=stock_model.pros,
+            stockName=stock_model.stockName,
+            PERatio=stock_model.PERatio,
         )
         return stock
     except StockAlreadyExist:
+        response.status_code = 400
         return {"message": "Stock already exist"}
-    except StockDontExist:
-        return {"message": "Stock doesn't exist"}
 
 
 @admin_required

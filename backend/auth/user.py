@@ -75,13 +75,13 @@ class UserManager:
         try:
             if not admin:
                 user_data = self.mysql_connection.fetch_all(
-                    'SELECT user_id, username, password FROM user_table WHERE username = %s',
-                    (username,)
+                    'SELECT user_id, username, password FROM user_table WHERE username = %s or email = %s',
+                    (username, username)
                 )
             else:
                 user_data = self.mysql_connection.fetch_all(
-                    'SELECT admin_id, username, password FROM admin_table WHERE username = %s',
-                    (username,)
+                    'SELECT admin_id, username, password FROM admin_table WHERE username = %s or email = %s',
+                    (username, username)
                 )
             if len(user_data) == 0:
                 return None

@@ -12,13 +12,23 @@ export interface UserInfo {
 }
 
 export interface Stock {
-    instrument_id: string;
-    stock_type: string;
-    stock_name: string;
-    prev_close: number;
-    current_price: number;
-    day_high: number;
-    day_low: number;
+    instrumentId: string;
+    stockType: string;
+    prevClose: number;
+    dayHigh: number;
+    dayLow: number;
+    high52weeks: number;
+    low52weeks: number;
+    dividendYield: number;
+    faceValue: number;
+    bookValue: number;
+    pros: string;
+    cons: string;
+    stockName: string;
+    price: number;
+    marketCap: number;
+    PERatio: number;
+    about: string;
 }
 
 export interface Transaction {

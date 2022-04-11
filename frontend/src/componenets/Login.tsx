@@ -1,21 +1,28 @@
 import {useForm} from "react-hook-form";
 import {StockBaseApi} from "../services/StockBaseApi";
 
-const LoginForm = () => {
+const Login = () => {
     const {
         register,
         handleSubmit,
+        setError,
         formState: {isSubmitting, errors}
     } = useForm();
 
     const onSubmit = handleSubmit(
         ({email, password}) => {
             StockBaseApi.getInstance().login({
-                email: email,
+                username: email,
                 password: password
             }).then(data => {
                 if (data.success) {
                     window.location.href = "/";
+                } else {
+                    setError("data", {
+                        type: "server",
+                        message: 'Invalid email or password'
+                    });
+                    return false;
                 }
             });
         }
@@ -35,14 +42,15 @@ const LoginForm = () => {
                     <p>Don't have an account? <a href="/signup">Signup</a></p>
                     <form method="post" name="login" onSubmit={onSubmit}>
                         <div className="inputs">
+                            <p className="error">{errors.data && errors.data.message}</p>
                             <input {...register('email', {
                                 required: 'Required',
                                 pattern: {
-                                    value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
-                                    message: "invalid email address"
+                                    value: /^[A-Za-z0-9]{5,}$/i,
+                                    message: "invalid email address or password"
                                 },
-                            })} placeholder={"Email"} />
-                            {errors.email && <p>{errors.email.message}</p>}
+                            })} placeholder={"Email or Username"} />
+                            <p className="error">{errors.email && errors.email.message}</p>
                             <br/>
                             <input {...register('password', {
                                 required: 'Required',
@@ -51,7 +59,7 @@ const LoginForm = () => {
                                     message: 'Min length is 8'
                                 },
                             })} placeholder={"Password"} />
-                            {errors.password && <p>{errors.password.message}</p>}
+                            <p className="error">{errors.password && errors.password.message}</p>
                             <br/>
                         </div>
                         <br/><br/>
@@ -69,4 +77,4 @@ const LoginForm = () => {
     );
 }
 
-export default LoginForm;
+export default Login;

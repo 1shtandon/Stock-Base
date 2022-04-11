@@ -12,14 +12,14 @@ class Transaction:
     def __init__(
             self,
             transaction_id: int,
-            instrument_id: str,
+            instrumentId: str,
             quantity: int,
             price: float,
             user_id: int,
             purchase_date  # TODO: datetime
     ):
         self.transaction_id = transaction_id
-        self.instrument_id = instrument_id
+        self.instrumentId = instrumentId
         self.quantity = quantity
         self.price = price
         self.user_id = user_id
@@ -33,7 +33,7 @@ class Transaction:
     @property
     def stock(self) -> Stock:
         from stock.stock import StockManager
-        return StockManager.get_stock_by_id(self.instrument_id)
+        return StockManager.get_stock_by_id(self.instrumentId)
 
     def __iter__(self):
         return iter([self.transaction_id, self.stock, self.quantity, self.price, self.user, self.purchase_date])
@@ -61,25 +61,25 @@ class TransactionManager:
         return Transaction(*data[0])
 
     @staticmethod
-    def get_transactions_by_instrument_id(instrument_id: str) -> List[Transaction]:
+    def get_transactions_by_instrumentId(instrumentId: str) -> List[Transaction]:
         data = mysql_connection.fetch_all(
-            "SELECT * FROM transaction_table WHERE instrument_id = %s",
-            (instrument_id,)
+            "SELECT * FROM transaction_table WHERE instrumentId = %s",
+            (instrumentId,)
         )
         return [Transaction(*row) for row in data]
 
     @staticmethod
     def get_transactions_by_stock(stock: Stock) -> List[Transaction]:
-        return TransactionManager.get_transactions_by_instrument_id(stock.instrument_id)
+        return TransactionManager.get_transactions_by_instrumentId(stock.instrumentId)
 
     @staticmethod
-    def get_transactions_by_user_id_and_instrument_id(
+    def get_transactions_by_user_id_and_instrumentId(
             user_id: int,
-            instrument_id: str
+            instrumentId: str
     ):
         data = mysql_connection.fetch_all(
-            "SELECT * FROM transaction_table WHERE user_id = %s AND instrument_id = %s",
-            (user_id, instrument_id)
+            "SELECT * FROM transaction_table WHERE user_id = %s AND instrumentId = %s",
+            (user_id, instrumentId)
         )
         return [Transaction(*row) for row in data]
 
@@ -93,17 +93,17 @@ class TransactionManager:
 
     @staticmethod
     def create_transaction(
-            instrument_id: str,
+            instrumentId: str,
             quantity: int,
             price: float,
             user_id: int,
             purchase_date  # TODO: datetime
     ) -> Transaction:
-        stock = StockManager.get_stock_by_id(instrument_id)
+        stock = StockManager.get_stock_by_id(instrumentId)
         mysql_connection.execute(
-            "INSERT INTO transaction_table (instrument_id, quantity, price, user_id, purchase_date) "
+            "INSERT INTO transaction_table (instrumentId, quantity, price, user_id, purchase_date) "
             "VALUES (%s, %s, %s, %s, %s)",
-            (instrument_id, quantity, price, user_id, purchase_date)
+            (instrumentId, quantity, price, user_id, purchase_date)
         )
         return TransactionManager.get_transaction_by_id(
             mysql_connection.last_insert_id()

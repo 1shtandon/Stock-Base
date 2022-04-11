@@ -6,8 +6,8 @@ from feedback.models import FeedbackModel
 
 
 def initialize_views(app: FastAPI) -> None:
-    app.post("/feedback")(create_feedback)
-    app.get("/feedback")(get_feedbacks)
+    app.post("/feedback/")(create_feedback)
+    app.get("/feedback/")(get_feedbacks)
 
 
 @normal_user_required
