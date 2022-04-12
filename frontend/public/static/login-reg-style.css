@@ -1,3 +1,15 @@
+ .promo-text{
+    font-size: 18px;
+    font-weight: bold;
+    color: rgb(241, 241, 106);
+    text-align: center;
+    margin-bottom: 10px;
+ }
+ #git
+{
+    text-decoration: none;
+}
+
 .box-form {
     margin: 10vh auto 0 auto;
     width: 80%;
@@ -62,6 +74,7 @@
     border-radius: 100px;
     display: inline-block;
     box-shadow: 0 3px 6px 1px #042d4657;
+    text-decoration: none;
 }
 
 .box-form .left .overlay span a:last-child {
