@@ -21,7 +21,6 @@ class Feedback:
         return user_manager.get_user(username=self.user_id)
 
 
-
 class FeedbackManager:
     @staticmethod
     def get_feedback(feedback_id):
