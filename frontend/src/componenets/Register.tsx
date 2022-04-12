@@ -79,7 +79,7 @@ const Register = () => {
                                     value: 8,
                                     message: 'Min length is 8'
                                 },
-                            })} placeholder={"Password"} />
+                            })} placeholder={"Password"} type={"password"} />
                             <p className="error">{errors.password && errors.password.message} </p>
                             <br/>
                             <input {...register('password_confirmation', {
@@ -88,7 +88,7 @@ const Register = () => {
                                     value: 8,
                                     message: 'Min length is 8'
                                 },
-                            })} placeholder={"Confirm Password"}/>
+                            })} placeholder={"Confirm Password"} type={"password"}/>
                             <p className="error">{errors.password_confirmation && errors.password_confirmation.message} </p>
                             <br/>
                             <input {...register('first_name', {
