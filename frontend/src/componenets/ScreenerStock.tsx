@@ -82,7 +82,9 @@ const ScreenerStock: React.FC = () => {
     }, []);
 
     return (
-        <div className="container safe-area">
+
+      
+        <div className="container safe-area sdsa"> 
             <div className="box-shadow box-border content-container container-details p-2">
                 <div className="align company">
                     <div id="company-name-value">
@@ -91,7 +93,7 @@ const ScreenerStock: React.FC = () => {
                             <i className="fa-solid fa-indian-rupee-sign" /> {stockInfo.price === 0 ? '-' : stockInfo.price}
                         </span>
                         <span id="company-per-loss-profit">
-                            {stockInfo.PERatio > 0 ? '-' : stockInfo.PERatio}%
+                            {stockInfo.PERatio > 0 ? '' : stockInfo.PERatio}
                             <i className={stockInfo.PERatio >= 0 ? "fa-solid fa-arrow-up" : "fa-solid fa-arrow-down"} />
                             {stockInfo.PERatio === 0 ? ' N/A ' : stockInfo.PERatio}%
                         </span>
@@ -110,6 +112,10 @@ const ScreenerStock: React.FC = () => {
                 <div className="stats-container">
                     <div className="card" style={{ width: '18rem' }}>
                         <ul className="list-group list-group-flush">
+                            <StockInfoItem name={'Stock Type'}
+                                value={stockInfo.stockType.toString()}
+
+                            />
                             <StockInfoItem name={'Market Cap'}
                                 value={stockInfo.marketCap.toString()}
                                 prefix={'₹'} suffix={'Cr'}
@@ -120,12 +126,9 @@ const ScreenerStock: React.FC = () => {
                             />
                             <StockInfoItem name={'Book Value'}
                                 value={stockInfo.bookValue.toString()}
-                                suffix={'%r'}
+                                prefix={'₹'}
                             />
-                            <StockInfoItem name={'Stock Type'}
-                                value={stockInfo.stockType.toString()}
-
-                            />
+                            
                         </ul>
                     </div>
                     <div className="card" style={{ width: '18rem' }}>
@@ -142,8 +145,8 @@ const ScreenerStock: React.FC = () => {
                                 value={stockInfo.dayLow.toString()}
                                 prefix={'₹'}
                             />
-                            <StockInfoItem name={'Dividend Yield'}
-                                value={stockInfo.dividendYield.toString()} suffix={'%'}
+                            <StockInfoItem name={'Previous Close'}
+                                value={stockInfo.prevClose.toString()} prefix={'₹'}
                             />
                         </ul>
                     </div>
@@ -171,6 +174,7 @@ const ScreenerStock: React.FC = () => {
                 </div>
             </div>
         </div>
+    
     )
 }
 

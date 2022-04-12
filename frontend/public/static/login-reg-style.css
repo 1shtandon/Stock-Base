@@ -175,3 +175,12 @@ label input[type="checkbox"] {
     font-size: 12px !important;
     margin-left: 30px;
 }
+/* .sdss
+{
+    background-image: url('/static/img/screenbg.png');
+} */
+.btn-outline-success
+{
+    border-radius: 10px;
+    transition: 200ms;
+}
