@@ -196,9 +196,9 @@
     align-items: center;
 }
 
-.container .form-control {
-    width: 50vw;
-}
+/*.container .form-control {*/
+/*    width: 50vw;*/
+/*}*/
 
 .stock-search-bar {
     margin-top: 10%;

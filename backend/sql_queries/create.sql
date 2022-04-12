@@ -53,11 +53,7 @@ CREATE TABLE `stock_table`
     `PERatio`       double                   not null,
     `about`         text                     not null,
     `stockType`    ENUM ('NSE', 'BSE')      not null,
-    `stock_name`    varchar(255)             not null,
-    `prev_close`    double                   not null,
-    `currentPrice`  double                   not null,
-    `day_high`      double                   not null,
-    `day_low`       double                   not null
+    `stockName`    varchar(255)             not null
 );
 
 CREATE TABLE `sessios_table`

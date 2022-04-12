@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import {StockBaseApi} from "../services/StockBaseApi";
 import {Stock} from "../models/stockBaseApi/Response";
 import {useParams} from "react-router-dom";
+import '../index.css';
 
 
 export interface StockInfoItemInterface {
@@ -49,7 +50,7 @@ const ScreenerStock: React.FC = () => {
     useEffect(() => {
         const fetchStockInfo = async () => {
             if (stockId !== undefined) {
-                const stockResponse = StockBaseApi.getInstance().getStock(stockId).then(
+                StockBaseApi.getInstance().getStock(stockId).then(
                     (response) => {
                         if (response.success && response.data) {
                             let stock = response.data

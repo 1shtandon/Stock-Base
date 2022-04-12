@@ -58,7 +58,7 @@ const Login = () => {
                                     value: 8,
                                     message: 'Min length is 8'
                                 },
-                            })} placeholder={"Password"} />
+                            })} placeholder={"Password"} type={"password"} />
                             <p className="error">{errors.password && errors.password.message}</p>
                             <br/>
                         </div>
