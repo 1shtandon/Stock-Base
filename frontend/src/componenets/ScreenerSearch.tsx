@@ -45,13 +45,15 @@ const ScreenerSearch: React.FC = () => {
                            value={searchTerm} onChange={handleChange}/>
                     <button className="btn btn-outline-success" type="submit">Search</button>
                 </form>
-                <ul>
+                <div style={{marginTop: '5vh'}}>
+                    <ul>
                     {searchResults.map(stock => (
                         <li key={stock.stock_id}>
-                            <a href={`/screener/${stock.stock_id}`}>{stock.stock_name}</a>
+                            <a href={`/screener/${stock.stock_id}`} style={{fontSize: 26}}>{stock.stock_name}</a>
                         </li>
                     ))}
                 </ul>
+                </div>
             </div>
         </div>
     );
