@@ -3,6 +3,7 @@ from typing import List
 import mysql.connector
 
 from database import mysql_connection
+from database.stockApi import StockApi
 
 
 class StockDontExist(Exception):
@@ -137,3 +138,16 @@ class StockManager:
             (stock_name,)
         )
         return [Stock.create(row) for row in data]
+
+    @staticmethod
+    def update_stock(
+            stock_id: str
+    ):
+        StockManager.get_stock_by_id(instrumentId=stock_id)
+        data = StockApi.get_stock(stock_id)
+        mysql_connection.execute(
+            "UPDATE stock_table SET dayHigh = %s, dayLow = %s, dividendYield = %s, faceValue = %s, bookValue = %s, marketCap = %s, price = %s WHERE instrumentId = %s",
+            (data['dayHigh'], data['dayLow'], data['dividendYield'], data['faceValue'], data['bookValue'],
+             data['marketCap'], data['price'], stock_id)
+        )
+        return StockManager.get_stock_by_id(instrumentId=stock_id)
