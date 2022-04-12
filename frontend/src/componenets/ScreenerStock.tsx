@@ -1,7 +1,7 @@
-import React, {useEffect, useState} from "react";
-import {StockBaseApi} from "../services/StockBaseApi";
-import {Stock} from "../models/stockBaseApi/Response";
-import {useParams} from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { StockBaseApi } from "../services/StockBaseApi";
+import { Stock } from "../models/stockBaseApi/Response";
+import { useParams } from "react-router-dom";
 import '../index.css';
 
 
@@ -12,7 +12,7 @@ export interface StockInfoItemInterface {
     suffix?: string;
 }
 
-const StockInfoItem: React.FC<StockInfoItemInterface> = ({name, prefix, suffix, value}) => {
+const StockInfoItem: React.FC<StockInfoItemInterface> = ({ name, prefix, suffix, value }) => {
     return (
         <li className="list-group-item">{name}
             <span className="align-right" id={name}>
@@ -88,11 +88,11 @@ const ScreenerStock: React.FC = () => {
                     <div id="company-name-value">
                         <span id="company-name">{stockInfo.stockName}</span>
                         <span id="company-current-value">
-                            <i className="fa-solid fa-indian-rupee-sign"/> {stockInfo.price === 0 ? '-' : stockInfo.PERatio}
+                            <i className="fa-solid fa-indian-rupee-sign" /> {stockInfo.price === 0 ? '-' : stockInfo.price}
                         </span>
                         <span id="company-per-loss-profit">
                             {stockInfo.PERatio > 0 ? '-' : stockInfo.PERatio}%
-                            <i className={stockInfo.PERatio >= 0 ? "fa-solid fa-arrow-up" : "fa-solid fa-arrow-down"}/>
+                            <i className={stockInfo.PERatio >= 0 ? "fa-solid fa-arrow-up" : "fa-solid fa-arrow-down"} />
                             {stockInfo.PERatio === 0 ? ' N/A ' : stockInfo.PERatio}%
                         </span>
 
@@ -108,43 +108,51 @@ const ScreenerStock: React.FC = () => {
                     </div>
                 </div>
                 <div className="stats-container">
-                    <div className="card" style={{width: '18rem'}}>
+                    <div className="card" style={{ width: '18rem' }}>
                         <ul className="list-group list-group-flush">
                             <StockInfoItem name={'Market Cap'}
-                                           value={stockInfo.marketCap.toString()}
-                                           prefix={'₹'} suffix={'Cr'}
+                                value={stockInfo.marketCap.toString()}
+                                prefix={'₹'} suffix={'Cr'}
                             />
                             <StockInfoItem name={'P/E Ratio'}
-                                           value={stockInfo.PERatio.toString()}
-                                           suffix={'%'}
+                                value={stockInfo.PERatio.toString()}
+                                suffix={'%'}
                             />
-                            <StockInfoItem name={'ROCE'}
-                                           value={stockInfo.price.toString()}
-                                           suffix={'%r'}
+                            <StockInfoItem name={'Book Value'}
+                                value={stockInfo.bookValue.toString()}
+                                suffix={'%r'}
+                            />
+                            <StockInfoItem name={'Stock Type'}
+                                value={stockInfo.stockType.toString()}
+
                             />
                         </ul>
                     </div>
-                    <div className="card" style={{width: '18rem'}}>
+                    <div className="card" style={{ width: '18rem' }}>
                         <ul className="list-group list-group-flush">
                             <StockInfoItem name={'Current Price'}
-                                           value={stockInfo.price.toString()}
-                                           prefix={'₹'} suffix={'Cr'}
+                                value={stockInfo.price.toString()}
+                                prefix={'₹'}
                             />
-                            <StockInfoItem name={'Book Value'}
-                                           value={stockInfo.bookValue.toString()}
-                                           prefix={'₹'}
+                            <StockInfoItem name={'Day High'}
+                                value={stockInfo.dayHigh.toString()}
+                                prefix={'₹'}
                             />
-                            <StockInfoItem name={'ROE'}
-                                           value={stockInfo.price.toString()}
+                            <StockInfoItem name={'Day Low'}
+                                value={stockInfo.dayLow.toString()}
+                                prefix={'₹'}
+                            />
+                            <StockInfoItem name={'Dividend Yield'}
+                                value={stockInfo.dividendYield.toString()} suffix={'%'}
                             />
                         </ul>
                     </div>
                 </div>
 
             </div>
-            <div className="card company-pro-con" style={{width: '100%'}}>
+            <div className="card company-pro-con" style={{ width: '100%' }}>
 
-                <div className="box-shadow box-border card-group content-container" style={{width: '100%'}}>
+                <div className="box-shadow box-border card-group content-container" style={{ width: '100%' }}>
                     <div className="card-body">
                         <h5 className="card-title">Pros</h5>
                         <p className="card-text">
@@ -153,7 +161,7 @@ const ScreenerStock: React.FC = () => {
                     </div>
                 </div>
 
-                <div className="box-shadow box-border card-group content-container" style={{width: '100%'}}>
+                <div className="box-shadow box-border card-group content-container" style={{ width: '100%' }}>
                     <div className="card-body">
                         <h5 className="card-title">Cons</h5>
                         <p className="card-text">

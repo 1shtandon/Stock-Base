@@ -20,8 +20,8 @@ const Tools = () => {
                     <div className="col-lg-8 mx-auto">
                         <h2>Tools By StockBase</h2>
                         <ul className="list-inline banner-social-buttons">
-                            <Tool toolName="Screener" link="/screener"/>
-                            <Tool toolName={"Portfolio"} link={"/portfolio"} />
+                            <Tool toolName="Stock Screener" link="/screener"/>
+                            <Tool toolName={"Portfolio Manager"} link={"/portfolio"} />
                         </ul>
                     </div>
                 </div>

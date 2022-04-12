@@ -31,7 +31,7 @@ export class ApiResponse<T> {
 
 export class StockBaseApi {
     private static instance: StockBaseApi;
-    private static baseUrl: string = 'http://192.168.228.208:8000/';
+    private static baseUrl: string = 'http://192.168.228.119:8000/';
     // private static baseUrl: string = 'http://192.168.1.153:8000/';
     public token: string | null = null;
     private username: string | null = null;
