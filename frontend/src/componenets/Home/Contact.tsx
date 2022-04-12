@@ -24,7 +24,7 @@ const Contact = () => {
                             <li className="list-inline-item">
                                 <button className="btn btn-primary btn-lg btn-default" type="button">
                                     <i className="fa fa-github fa-fw"/>
-                                    <span className="network-name">&nbsp;github</span>
+                                    <span className="network-name" ><a id="git"href="https://github.com/1shtandon/Stock-Base" target="">&nbsp;github</a></span>
                                 </button>
                             </li>
                         </ul>
