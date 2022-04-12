@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+        </script>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+</head>
+
+<body>
+    <nav class="navbar gradient-border navbar-expand-lg navbar-dark ">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Stock Screener</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Link</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Tools
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">Create </a></li>
+                            <li><a class="dropdown-item" href="#">Search Share</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Export Data</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success " type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <div class="box-shadow box-border content-container container-details">
+        <div class="align company">
+            <div id="company-name-value">
+                <span id="company-name">Abhishek Ltd</span>
+                <span id="company-current-value"><i class="fa-solid fa-indian-rupee-sign"></i>100
+                    </span>
+
+
+                    <span id="company-per-loss-profit">
+                    <i class="fa-solid fa-arrow-up"></i>1.2%</span>
+
+            </div>
+            <a href="" class="follow-button-link"><button class="follow-button" type="">Follow</button></a>
+        </div>
+        <div class="align company-about">
+            <h4><span class="second-heading">About</span></h4>
+            <div class="content-about-company">
+                Lorem ipsum dolor sit amet, consectetur adip lorem ipsum dolor lorem ipsum dolor
+            </div>
+        </div>
+        <div class="stats-container">
+            <div class="card" style="width: 18rem;">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Market Cap<span class="align-right" id="market-cap"><i
+                                class="fa-solid fa-indian-rupee-sign"></i>1000</span></li>
+                    <li class="list-group-item">P/E Ratio<span class="align-right" id="pe-ratio"><i
+                                class="fa-solid fa-indian-rupee-sign"></i>1000</span> </li>
+                    <li class="list-group-item">Stock P/E<span class="align-right" id="book-value"><i
+                                class="fa-solid fa-indian-rupee-sign"></i>1000</span></li>
+                </ul>
+            </div>
+            <div class="card" style="width: 18rem;">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Current Price<span class="align-right" id="market-cap"><i
+                                class="fa-solid fa-indian-rupee-sign"></i>1000</span></li>
+                    <li class="list-group-item">Book Value<span class="align-right" id="pe-ratio"><i
+                                class="fa-solid fa-indian-rupee-sign"></i>1000</span> </li>
+                    <li class="list-group-item">ROE<span class="align-right" id="book-value"><i
+                                class="fa-solid fa-indian-rupee-sign"></i>1000</span></li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+    <div class="card company-pro-con" style="width: 100%;">
+
+        <div class="box-shadow box-border card-group content-container" style="width: 100%;">
+            <div class="card-body">
+                <h5 class="card-title">Pros</h5>
+                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit corporis beatae
+                    nostrum, rerum, recusandae quaerat sed laborum expedita aliquid tenetur illo accusamus dignissimos
+                    facere sunt doloremque, cum minima placeat modi.</p>
+            </div>
+        </div>
+
+        <div class="box-shadow box-border card-group content-container" style="width: 100%;">
+            <div class="card-body">
+                <h5 class="card-title">Cons</h5>
+                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit corporis beatae
+                    nostrum, rerum, recusandae quaerat sed laborum expedita aliquid tenetur illo accusamus dignissimos
+                    facere sunt doloremque, cum minima placeat modi.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer  id="footer">
+        <div id="contact" >
+            <h2>Contact us</h2>
+            <p>Feel free to Contact Us!</p>
+            <div class="social-contact-btn">
+                <a  href=""><button class="social-btn" type="submit" class="google-plus"><i class="fa-brands fa-google-plus-g"></i> Google+</button></a>
+                <a href=""><button  class="social-btn" type="submit"><i class="fa-brands fa-github"></i></i>
+                        Github</button></a>
+                <a href=""><button class="social-btn" type="submit" ><i class="fa-brands fa-twitter"></i>
+                                Twitter</button></a>
+            </div>
+        </div>
+    </footer>
+       
+</body>
+</html>
