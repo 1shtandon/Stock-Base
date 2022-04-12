@@ -51,7 +51,7 @@ const Register = () => {
                 </div>
                 <div className="right">
                     <h5>Login</h5>
-                    <p>Already have an account? <a href={"/login"}>Signup</a></p>
+                    <p>Already have an account? <a href={"/login"}>Login</a></p>
                     <form method="post" name="login" onSubmit={onSubmit}>
                         <div className="inputs">
                             <p className="error">{errors.data && errors.data.message} </p>

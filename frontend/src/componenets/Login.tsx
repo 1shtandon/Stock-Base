@@ -34,7 +34,7 @@ const Login = () => {
                 <div className="left">
                     <div className="overlay">
                         <h1>Stock Base</h1>
-                        <p>welcome to the stock base. Please log in to continue.</p>
+                        <p>Welcome to the stock base. Please log in to continue.</p>
                     </div>
                 </div>
                 <div className="right">
@@ -47,7 +47,7 @@ const Login = () => {
                                 required: 'Required',
                                 pattern: {
                                     value: /^[A-Za-z0-9]{5,}$/i,
-                                    message: "invalid email address or password"
+                                    message: "Invalid email address or password"
                                 },
                             })} placeholder={"Email or Username"} />
                             <p className="error">{errors.email && errors.email.message}</p>
@@ -65,7 +65,7 @@ const Login = () => {
                         <br/><br/>
                         <div className="remember-me--forget-password">
                             <p>
-                                <a href="/forget-password">forget password</a>
+                                <a href="/forget-password">Forget password</a>
                             </p>
                         </div>
                         <br/>
