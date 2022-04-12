@@ -35,13 +35,13 @@ const ScreenerSearch: React.FC = () => {
     };
 
     return (
-        <div className="container safe-area">
+        <div className="container safe-area sdss">
             <div className="stock-search-bar">
                 <form className="d-flex" onSubmit={() => {
                     handleChange({target: {value: searchTerm}});
                     return false
                 }}>
-                    <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"
+                    <input className="form-control me-2" type="search" placeholder="Search Stock" aria-label="Search"
                            value={searchTerm} onChange={handleChange}/>
                     <button className="btn btn-outline-success" type="submit">Search</button>
                 </form>
