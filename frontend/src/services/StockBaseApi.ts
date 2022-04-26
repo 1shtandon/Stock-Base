@@ -9,7 +9,7 @@ import {
     FeedbackResponse,
     FeedbacksResponse,
     LoginResponse,
-    Stock,
+    Stock, StockValue,
     Transaction,
     UserInfo
 } from "../models/stockBaseApi/Response";
@@ -31,8 +31,9 @@ export class ApiResponse<T> {
 
 export class StockBaseApi {
     private static instance: StockBaseApi;
-    private static baseUrl: string = 'http://192.168.90.248:8000/';
-    // private static baseUrl: string = 'http://192.168.1.153:8000/';
+    // private static baseUrl: string = 'http://192.168.90.248:8000/';
+    // private static baseUrl: string = 'http://192.168.1.157:8000/';
+    private static baseUrl: string = 'http://127.0.0.1:8000/';
     public token: string | null = null;
     private username: string | null = null;
     private email: string | null = null;
@@ -323,6 +324,51 @@ export class StockBaseApi {
             );
         }
     }
+
+    public async getValue(): Promise<ApiResponse<StockValue[]>> {
+        try {
+            let url = `${StockBaseApi.baseUrl}value/`;
+            const {data} = await axios.get<StockValue[]>(url, {
+                headers: {
+                    Authorization: `Token ${this.token}`
+                }
+            });
+            return new ApiResponse(
+                true,
+                data
+            );
+        } catch (e) {
+            console.log(e);
+            return new ApiResponse<StockValue[]>(
+                false,
+                null
+            );
+        }
+    }
+
+    public async getStockValue(instrumentId: string): Promise<ApiResponse<StockValue>> {
+        try {
+            let url = `${StockBaseApi.baseUrl}value/${instrumentId}/`;
+            const {data} = await axios.get<StockValue>(url, {
+                headers: {
+                    Authorization: `Token ${this.token}`
+                }
+            });
+            return new ApiResponse(
+                true,
+                data
+            );
+        } catch (e) {
+            console.log(e);
+            return new ApiResponse<StockValue>(
+                false,
+                null
+            );
+        }
+    }
+
+
+
 }
 
 export const sessionCheck = (responseBody: any) => {

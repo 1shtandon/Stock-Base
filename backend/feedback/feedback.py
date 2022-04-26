@@ -2,13 +2,14 @@ from typing import List
 
 from auth.user import User
 from database import mysql_connection
+from util import CustomSerializable
 
 
 class FeedbackDontExist(Exception):
     pass
 
 
-class Feedback:
+class Feedback(CustomSerializable):
     def __init__(self, feedback_id, user_id, title, message):
         self.feedback_id = feedback_id
         self.user_id = user_id

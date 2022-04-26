@@ -16,18 +16,20 @@ def initialize_views(app: FastAPI) -> None:
     app.get("/stock/all/")(get_all_stocks)
     app.post("/transaction/")(create_transaction)
     app.get('/transaction/')(get_transaction)
+    app.get('/value/')(get_stocks_value)
+    app.get('/value/{instrumentId}')(get_stocks_value_of_stock)
 
 
 @normal_user_required
 def get_transaction(request: Request, response: Response, stock_id: Optional[str] = None):
     if stock_id:
-        transactions = TransactionManager.get_transactions_by_user_id_and_instrumentId(
-            instrumentId=stock_id,
-            user_id=request.user.user_id,
+        transactions = TransactionManager.get_transactions_of_stock_by_user(
+            stock=StockManager.get_stock_by_id(stock_id),
+            user=request.user,
         )
     else:
-        transactions = TransactionManager.get_transactions_by_user_id(
-            user_id=request.user.id
+        transactions = TransactionManager.get_transactions_by_user(
+            user=request.user
         )
     return transactions
 
@@ -36,11 +38,11 @@ def get_transaction(request: Request, response: Response, stock_id: Optional[str
 def create_transaction(transaction_model: TransactionModel, request: Request, response: Response):
     try:
         transaction = TransactionManager.create_transaction(
-            instrumentId=transaction_model.instrumentId,
             quantity=transaction_model.quantity,
             price=transaction_model.price,
             purchase_date=transaction_model.purchase_date,
-            user_id=request.user.user_id,
+            user=request.user,
+            stock=StockManager.get_stock_by_id(transaction_model.instrumentId)
         )
         return transaction
     except StockDontExist:
@@ -94,3 +96,18 @@ def get_stock(request: Request, response: Response, stock_id: str):
 def search_stocks(request: Request, response: Response, stock_name: str):
     stocks = StockManager.search_stocks_by_name(stock_name)
     return stocks
+
+
+@normal_user_required
+def get_stocks_value_of_stock(request: Request, response: Response, instrumentId: str):
+    data = TransactionManager.get_market_value_and_buyed_value_of_stocks_of_user_by_stock(
+        request.user,
+        StockManager.get_stock_by_id(instrumentId)
+    )
+    return data
+
+
+@normal_user_required
+def get_stocks_value(request: Request, response: Response):
+    data = TransactionManager.get_market_value_and_spend_value_of_stocks_of_user(request.user)
+    return data

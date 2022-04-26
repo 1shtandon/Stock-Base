@@ -3,6 +3,7 @@ from typing import Optional, Union
 import mysql.connector
 
 from database import mysql_connection, MysqlConnection
+from util import CustomSerializable
 
 
 class UsernameAlreadyExists(Exception):
@@ -145,7 +146,7 @@ class UserManager:
         return self.get_user(username)
 
 
-class User:
+class User(CustomSerializable):
     def __init__(
             self,
             user_id: int,
