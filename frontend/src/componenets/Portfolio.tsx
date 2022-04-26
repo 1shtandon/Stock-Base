@@ -10,7 +10,7 @@ import 'react-toastify/dist/ReactToastify.css';
 const DetailCard: React.FC<StockValue> = ({stock_name, instrument_id, market_value, quantity, day_gain, price}) => {
     return (
         <tr data-item="trxc">
-            <td><a href={instrument_id} style={{color: "white"}}>{instrument_id}</a></td>
+            <td><a href={`/screener/${instrument_id}`} style={{color: "white"}}>{instrument_id}</a></td>
             <td style={{color: "white"}}>{stock_name}</td>
             <td className="text-right" data-column="value" style={{color: "white"}}>{price}</td>
             <td className="text-right up" data-column="change" style={{color: "white"}}>{quantity}</td>
@@ -290,7 +290,10 @@ const Portfolio: React.FC = () => {
                                         if (!transactionRes.success) {
                                             throw Error("Error");
                                         }
-                                        notify("Stock Added", false);
+                                        if(addingStock)
+                                        { notify("Stock Added", false); }
+                                        else
+                                        { notify("Stock Sold", false); }
                                         setLoading(false);
                                         setAddingStock(false);
                                         setSearchTerm("");

@@ -99,7 +99,7 @@ const ScreenerStock: React.FC = () => {
                         </span>
 
                     </div>
-                    <a href="#" className="follow-button-link">
+                    <a href="/portfolio" className="follow-button-link">
                         <button className="follow-button">Follow</button>
                     </a>
                 </div>
