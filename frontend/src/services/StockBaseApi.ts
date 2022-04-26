@@ -3,13 +3,15 @@ import {
     CreateTransactionPayload,
     FeedbackPayload,
     LoginPayload,
-    RegisterPayload, SearchStockParams
+    RegisterPayload,
+    SearchStockParams
 } from "../models/stockBaseApi/Request";
 import {
     FeedbackResponse,
     FeedbacksResponse,
     LoginResponse,
-    Stock, StockValue,
+    Stock,
+    StockValue,
     Transaction,
     UserInfo
 } from "../models/stockBaseApi/Response";
@@ -306,11 +308,10 @@ export class StockBaseApi {
     public async createTransaction(transaction: CreateTransactionPayload): Promise<ApiResponse<Transaction>> {
         try {
             let url = `${StockBaseApi.baseUrl}transaction/`;
-            const {data} = await axios.post<Transaction>(url, {
-                body: transaction,
+            const {data} = await axios.post<Transaction>(url, transaction, {
                 headers: {
                     Authorization: `Token ${this.token}`
-                }
+                },
             });
             return new ApiResponse(
                 true,
@@ -366,7 +367,6 @@ export class StockBaseApi {
             );
         }
     }
-
 
 
 }

@@ -145,32 +145,32 @@
 label {
     display: block;
     position: relative;
-    margin-left: 30px;
+    /*margin-left: 30px;*/
 }
 
-label::before {
-    content: ' \f00c';
-    position: absolute;
-    font-family: FontAwesome;
-    background: transparent;
-    border: 3px solid #70f570;
-    border-radius: 4px;
-    color: transparent;
-    left: -30px;
-    transition: all 0.2s linear;
-}
+/*label::before {*/
+/*    content: ' \f00c';*/
+/*    position: absolute;*/
+/*    font-family: FontAwesome;*/
+/*    background: transparent;*/
+/*    border: 3px solid #70f570;*/
+/*    border-radius: 4px;*/
+/*    color: transparent;*/
+/*    left: -30px;*/
+/*    transition: all 0.2s linear;*/
+/*}*/
 
-label:hover::before {
-    font-family: FontAwesome;
-    content: ' \f00c';
-    color: #fff;
-    cursor: pointer;
-    background: #70f570;
-}
-
-label:hover::before .text-checkbox {
-    background: #70f570;
-}
+/*label:hover::before {*/
+/*    font-family: FontAwesome;*/
+/*    content: ' \f00c';*/
+/*    color: #fff;*/
+/*    cursor: pointer;*/
+/*    background: #70f570;*/
+/*}*/
+/**/
+/*label:hover::before .text-checkbox {*/
+/*    background: #70f570;*/
+/*}*/
 
 label span.text-checkbox {
     display: inline-block;

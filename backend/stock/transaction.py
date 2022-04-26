@@ -144,7 +144,7 @@ class TransactionManager:
             stockType=row[5],
             price=row[6],
             day_gain=round((row[6] - row[7]) / row[7] * 100, 2)
-        ) for row in data]
+        ) for row in data if row[0]]
 
     @staticmethod
     def get_market_value_and_buyed_value_of_stocks_of_user_by_stock(user: User, stock: Stock) -> StockValueInfo:

@@ -142,7 +142,7 @@ class StockManager:
 
     @staticmethod
     def update_stock(
-            stock_id: str
+            stock_id: str,
     ):
         StockManager.get_stock_by_id(instrumentId=stock_id)
         data = StockApi.get_stock(stock_id)

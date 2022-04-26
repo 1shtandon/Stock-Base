@@ -23,7 +23,7 @@ export interface SearchStockParams {
 }
 
 export interface CreateTransactionPayload {
-    instrument_id: string;
+    instrumentId: string;
     quantity: number;
     price: number;
     purchase_date: string;
