@@ -274,6 +274,7 @@ const Portfolio: React.FC = () => {
                                     if (currentStock) {
                                         if (quantity > currentStock.quantity) {
                                             notify(`Quantity should be less than ${currentStock.quantity}`, true);
+                                            return;
                                         }
                                     }
                                     if (!addingStock) {
