@@ -40,6 +40,17 @@ export interface Transaction {
     purchase_date: string;
 }
 
+export interface StockValue {
+    market_value: number;
+    buyed_value: number;
+    quantity: number;
+    instrument_id: string;
+    stock_name: string;
+    stockType: string;
+    price: number;
+    day_gain: number;
+}
+
 export interface ErrorResponse {
     error: string;
     error_description: string;

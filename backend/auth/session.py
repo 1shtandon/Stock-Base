@@ -18,7 +18,6 @@ class Session:
         return ''.join(random.choices(string.ascii_uppercase + string.digits, k=20))
 
     @staticmethod
-    @functools.lru_cache(maxsize=None)
     def get_session(session_id) -> User:
         data = mysql_connection.fetch_all(
             "SELECT user_id, is_admin FROM sessios_table WHERE session_key = %s",

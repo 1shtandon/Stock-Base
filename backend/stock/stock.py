@@ -4,6 +4,7 @@ import mysql.connector
 
 from database import mysql_connection
 from database.stockApi import StockApi
+from util import CustomSerializable
 
 
 class StockDontExist(Exception):
@@ -14,7 +15,7 @@ class StockAlreadyExist(Exception):
     pass
 
 
-class Stock:
+class Stock(CustomSerializable):
     def __init__(
             self,
             instrumentId: str,
@@ -141,7 +142,7 @@ class StockManager:
 
     @staticmethod
     def update_stock(
-            stock_id: str
+            stock_id: str,
     ):
         StockManager.get_stock_by_id(instrumentId=stock_id)
         data = StockApi.get_stock(stock_id)

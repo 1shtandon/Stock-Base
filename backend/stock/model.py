@@ -1,6 +1,17 @@
 from pydantic import BaseModel
 
 
+class StockValueInfo(BaseModel):
+    market_value: float
+    buyed_value: float
+    quantity: int
+    instrument_id: str
+    stock_name: str
+    stockType: str
+    price: float
+    day_gain: float
+
+
 class StockModel(BaseModel):
     instrumentId: str
     stockType: str

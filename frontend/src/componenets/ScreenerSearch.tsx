@@ -43,7 +43,7 @@ const ScreenerSearch: React.FC = () => {
                 }}>
                     <input className="form-control me-2" type="search" placeholder="Search Stock" aria-label="Search"
                            value={searchTerm} onChange={handleChange}/>
-                    <button className="btn btn-outline-success" type="submit">Search</button>
+                    {/*<button className="btn btn-outline-success" type="submit">Search</button>*/}
                 </form>
                 <div style={{marginTop: '5vh'}}>
                     <ul>

@@ -9,6 +9,7 @@ import {logout} from "./util";
 import Register from "./componenets/Register";
 import ScreenerSearch from "./componenets/ScreenerSearch";
 import ScreenerStock from "./componenets/ScreenerStock";
+import Portfolio from "./componenets/Portfolio";
 
 
 function App() {
@@ -44,7 +45,8 @@ function App() {
                 <Route path='/signup' element={<Register/>}/>
                 <Route path='/register' element={<Register/>}/>
                 <Route path='/screener' element={<ScreenerSearch/>}/>
-                <Route path='/screener/:stockId' element={<ScreenerStock />}/>
+                <Route path='/screener/:stockId' element={<ScreenerStock/>}/>
+                <Route path='/portfolio' element={<Portfolio/>}/>
                 <Route path='/watchlist' element={<div>Watchlist</div>}/>
                 <Route path='*' element={<div>404</div>}/>
             </Routes>

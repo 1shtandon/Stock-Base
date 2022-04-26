@@ -1,4 +1,4 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 
 class FeedbackModel(BaseModel):
@@ -10,4 +10,4 @@ class TransactionModel(BaseModel):
     instrumentId: str
     quantity: int
     price: float
-    purchase_date: str
+    purchase_date: str = Field(..., regex="^\d{4}-\d{2}-\d{2}$")

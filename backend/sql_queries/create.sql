@@ -28,8 +28,8 @@ CREATE TABLE `feedback_table`
 CREATE TABLE `transaction_table`
 (
     `transaction_id` int PRIMARY KEY AUTO_INCREMENT,
-    `instrumentId`  varchar(255) not null,
-    `quantity`       int          not null,
+    `instrumentId`   varchar(255) not null,
+    `quantity`       int unsigned not null,
     `price`          double       not null,
     `user_id`        int          not null,
     `purchase_date`  date         not null
@@ -37,12 +37,12 @@ CREATE TABLE `transaction_table`
 
 CREATE TABLE `stock_table`
 (
-    `instrumentId` varchar(255) PRIMARY KEY not null,
+    `instrumentId`  varchar(255) PRIMARY KEY not null,
     `prevClose`     double                   not null,
     `dayHigh`       double                   not null,
     `dayLow`        double                   not null,
-    `high52weeks` double                   not null,
-    `low52weeks`  double                   not null,
+    `high52weeks`   double                   not null,
+    `low52weeks`    double                   not null,
     `dividendYield` double                   not null,
     `faceValue`     double                   not null,
     `bookValue`     double                   not null,
@@ -52,8 +52,8 @@ CREATE TABLE `stock_table`
     `price`         double                   not null,
     `PERatio`       double                   not null,
     `about`         text                     not null,
-    `stockType`    ENUM ('NSE', 'BSE')      not null,
-    `stockName`    varchar(255)             not null
+    `stockType`     ENUM ('NSE', 'BSE')      not null,
+    `stockName`     varchar(255)             not null
 );
 
 CREATE TABLE `sessios_table`

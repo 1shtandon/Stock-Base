@@ -37,35 +37,35 @@ async def user(request: Request, response: Response):
 
 @app.post("/admin/login/")
 def admin_login(request: Request, login_data: LoginModel, response: Response):
-    user = user_manager.authenticate_user(login_data.username, login_data.password, admin=True)
-    if not user:
+    _user = user_manager.authenticate_user(login_data.username, login_data.password, admin=True)
+    if not _user:
         response.status_code = 401
         return {"message": "Invalid credentials"}
-    session_key = Session.create_session(user)
+    session_key = Session.create_session(_user)
     request.is_authorized = True
     response.set_cookie(key="session_key", value=session_key)
     return LoginResponse(
         access_token=session_key,
-        username=user.username,
-        email=user.email,
-        isAdmin=user.is_admin,
+        username=_user.username,
+        email=_user.email,
+        isAdmin=_user.is_admin,
     )
 
 
 @app.post("/login/")
 def login(request: Request, login_data: LoginModel, response: Response):
-    user = user_manager.authenticate_user(login_data.username, login_data.password)
-    if not user:
+    _user = user_manager.authenticate_user(login_data.username, login_data.password)
+    if not _user:
         response.status_code = 401
         return {"message": "Invalid credentials"}
-    session_key = Session.create_session(user)
+    session_key = Session.create_session(_user)
     request.is_authorized = True
     response.set_cookie(key="session_key", value=session_key)
     return LoginResponse(
         access_token=session_key,
-        username=user.username,
-        email=user.email,
-        isAdmin=user.is_admin,
+        username=_user.username,
+        email=_user.email,
+        isAdmin=_user.is_admin,
     )
 
 
@@ -81,7 +81,7 @@ async def logout(request: Request, response: Response):
 @app.post("/register/")
 async def register(register_user: UserRegisterModel, response: Response, request: Request):
     try:
-        user = user_manager.create_user(
+        _user = user_manager.create_user(
             username=register_user.username,
             password=register_user.password,
             email=register_user.email,
@@ -90,13 +90,13 @@ async def register(register_user: UserRegisterModel, response: Response, request
             age=register_user.age,
         )
         request.is_authorized = True
-        session_key = Session.create_session(user)
+        session_key = Session.create_session(_user)
         response.set_cookie(key="session_key", value=session_key)
         return LoginResponse(
             access_token=session_key,
-            username=user.username,
-            email=user.email,
-            isAdmin=user.is_admin,
+            username=_user.username,
+            email=_user.email,
+            isAdmin=_user.is_admin,
         )
     except UsernameAlreadyExists:
         response.status_code = 400
