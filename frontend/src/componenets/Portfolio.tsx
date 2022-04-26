@@ -19,7 +19,7 @@ const DetailCard: React.FC<StockValue> = ({stock_name, instrument_id, market_val
                 style={{color: "white"}}>{market_value.toLocaleString()}</td>
         </tr>
     );
-}
+}w
 
 
 const Portfolio: React.FC = () => {
@@ -103,10 +103,10 @@ const Portfolio: React.FC = () => {
                                 marginTop: "50px",
                                 flexDirection: "column"
                             }}>
-                                <h2>Total Market
-                                    Value: {parseFloat(stocksValue.reduce((acc, curr) => acc + curr.market_value, 0).toFixed(2)).toLocaleString()}</h2>
-                                <h2>Today Total Day
-                                    Gain: {parseFloat(stocksValue.reduce((acc, curr) => acc + (curr.price * curr.quantity * curr.day_gain / 100), 0).toFixed(2)).toLocaleString()}</h2>
+                                <h2 id="mv">Total Market
+                                    Value: ₹{parseFloat(stocksValue.reduce((acc, curr) => acc + curr.market_value, 0).toFixed(2)).toLocaleString()}</h2>
+                                <h2 id="mv">Today Total Day
+                                    Gain: ₹{parseFloat(stocksValue.reduce((acc, curr) => acc + (curr.price * curr.quantity * curr.day_gain / 100), 0).toFixed(2)).toLocaleString()}</h2>
                             </div>
                             <div style={{marginTop: '5vh'}}>
                                 <ul>
@@ -170,19 +170,19 @@ const Portfolio: React.FC = () => {
                                             <table className="table table-responsive table-striped">
                                                 <thead>
                                                 <tr>
-                                                    <th style={{width: "12%", color: "white"}}>Symbol</th>
-                                                    <th style={{color: "white"}}>Name</th>
+                                                        <th style={{ width: "12%", color: "#42DCA3"}}>Symbol</th>
+                                                        <th style={{ color: "#42DCA3"}}>Name</th>
                                                     <th className="text-right"
-                                                        style={{width: "10%", color: "white"}}>Price
+                                                            style={{ width: "10%", color: "#42DCA3"}}>Price
                                                     </th>
                                                     <th className="text-right"
-                                                        style={{width: "12%", color: "white"}}>Quantity
+                                                            style={{ width: "12%", color: "#42DCA3"}}>Quantity
                                                     </th>
-                                                    <th className="text-right" style={{width: "14%", color: "white"}}>
+                                                        <th className="text-right" style={{ width: "14%", color: "#42DCA3"}}>
                                                         Day Gain
                                                     </th>
                                                     <th className="text-right"
-                                                        style={{width: "15%", color: "white"}}>Value
+                                                            style={{ width: "15%", color: "#42DCA3"}}>Value
                                                     </th>
                                                 </tr>
                                                 </thead>
