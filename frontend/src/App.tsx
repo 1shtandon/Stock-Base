@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import UserInfoInterface from "./interfaces/UserInfo";
 import {StockBaseApi} from "./services/StockBaseApi";
-import {Route, BrowserRouter as Router, Routes, useNavigate, useParams} from "react-router-dom";
+import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
 import Navbar from "./componenets/Navbar";
 import Home from "./componenets/Home";
 import Login from "./componenets/Login";
@@ -40,15 +40,13 @@ function App() {
             }}/>
             <Routes>
                 <Route path='/' element={<Home/>}/>
-                <Route path='/dashboard' element={<div>Dashboard</div>}/>
                 <Route path='/login' element={<Login/>}/>
                 <Route path='/signup' element={<Register/>}/>
                 <Route path='/register' element={<Register/>}/>
-                <Route path='/screener' element={<ScreenerSearch/>}/>
-                <Route path='/screener/:stockId' element={<ScreenerStock/>}/>
-                <Route path='/portfolio' element={<Portfolio/>}/>
-                <Route path='/watchlist' element={<div>Watchlist</div>}/>
-                <Route path='*' element={<div>404</div>}/>
+                <Route path='/screener' element={userInfo.loggedIn ? <ScreenerSearch/> : <Login/>}/>
+                <Route path='/screener/:stockId' element={userInfo.loggedIn ? <ScreenerStock/> : <Login/>}/>
+                <Route path='/portfolio' element={userInfo.loggedIn ? <Portfolio/> : <Login/>}/>
+                <Route path='*' element={<div className="safe-area">404</div>}/>
             </Routes>
         </Router>
     );

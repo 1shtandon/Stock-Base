@@ -19,7 +19,7 @@ const DetailCard: React.FC<StockValue> = ({stock_name, instrument_id, market_val
                 style={{color: "white"}}>{market_value.toLocaleString()}</td>
         </tr>
     );
-}w
+}
 
 
 const Portfolio: React.FC = () => {
